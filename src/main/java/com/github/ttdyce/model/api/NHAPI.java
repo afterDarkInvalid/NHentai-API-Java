@@ -12,6 +12,15 @@ public class NHAPI {
 
     public NHAPI() {
     }
+    
+    public String fetch_api_root() throws Exception {
+        // simply queries the api root and verifies it still exists
+        String api_root_url = URLs.API_ROOT + "/";
+        Request root_fetch = new Request();
+        String response = root_fetch.get(api_root_url);
+        System.out.println(response);
+        return response;
+    }
 
     public void getComicList(final ResponseCallback callback) throws IOException {
         getComicList("", 1, false, callback);
@@ -107,7 +116,7 @@ public class NHAPI {
     // https://nhentai.net/api/galleries/search?query=language:chinese&page=1&sort=popular
     // https://nhentai.net/api/gallery/284987
     public static class URLs {
-        private final static String API_ROOT = "https://nhentai.net/api/v2";
+        public final static String API_ROOT = "https://nhentai.net/api/v2";
         private final static String searchPrefix = API_ROOT + "/galleries/search?query=";
         private final static String getComicPrefix = API_ROOT + "/gallery/";
         private final static String[] types = { "jpg", "png" };
