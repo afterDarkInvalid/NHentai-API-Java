@@ -15,7 +15,7 @@ public class NHAPI {
     
     public String fetch_api_root() throws Exception {
         // simply queries the api root and verifies it still exists
-        String api_root_url = URLs.API_ROOT + "/";
+        String api_root_url = URLs.API_ROOT;
         Request root_fetch = new Request();
         String response = root_fetch.get(api_root_url);
         System.out.println(response);

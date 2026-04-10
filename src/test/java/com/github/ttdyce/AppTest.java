@@ -1,17 +1,8 @@
 package com.github.ttdyce;
 
-import java.util.ArrayList;
-
-import com.github.ttdyce.model.Comic;
-import com.github.ttdyce.model.api.PopularType;
-import com.github.ttdyce.model.api.ResponseCallback;
-import com.github.ttdyce.model.factory.NHApiComicFactory;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-
 import org.junit.Test;
+
+import com.github.ttdyce.model.api.NHAPI;
 
 /**
  * Unit test for simple App.
@@ -20,12 +11,14 @@ public class AppTest
 {
     // very simple compile testing
     @Test
-    public boolean compilation() {
-        return true;
+    public void compilation() {
+        System.out.println("Compiled properly!");
+        return;
     }
     //simply fetches api root and fetches version/messages
     @Test
-    public boolean api_heartbeat() {
-        
+    public void api_heartbeat() throws Exception {
+        System.out.println(new NHAPI().fetch_api_root());
+        return;
     }
 }
