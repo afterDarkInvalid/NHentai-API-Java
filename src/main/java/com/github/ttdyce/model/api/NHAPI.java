@@ -1,11 +1,11 @@
 package com.github.ttdyce.model.api;
 
+import java.io.IOException;
+import java.util.Locale;
+
 import com.github.ttdyce.model.Request;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
-
-import java.io.IOException;
-import java.util.Locale;
 
 public class NHAPI {
     private static final String TAG = "NHAPI";
@@ -107,9 +107,10 @@ public class NHAPI {
     // https://nhentai.net/api/galleries/search?query=language:chinese&page=1&sort=popular
     // https://nhentai.net/api/gallery/284987
     public static class URLs {
-        private static String searchPrefix = "https://nhentai.net/api/galleries/search?query=";
-        private static String getComicPrefix = "https://nhentai.net/api/gallery/";
-        private static String[] types = { "jpg", "png" };
+        private final static String API_ROOT = "https://nhentai.net/api/v2";
+        private final static String searchPrefix = API_ROOT + "/galleries/search?query=";
+        private final static String getComicPrefix = API_ROOT + "/gallery/";
+        private final static String[] types = { "jpg", "png" };
 
         public static String search(String query, int page, boolean sortedPopular) {
             return URLs.search(query, page, sortedPopular, PopularType.allTime);
@@ -156,7 +157,7 @@ public class NHAPI {
         }
 
         public static String getIndex(int page) {
-            return "https://nhentai.net/api/galleries/all?page=" + page;
+            return API_ROOT + "/galleries/all?page=" + page;
         }
     }
 }

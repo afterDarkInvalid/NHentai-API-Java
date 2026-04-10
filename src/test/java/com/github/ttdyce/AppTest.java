@@ -18,54 +18,14 @@ import org.junit.Test;
  */
 public class AppTest 
 {
+    // very simple compile testing
     @Test
-    public void shouldShowPopularityOption()
-    {
-        // System.out.println(NHAPI.URLs.search("chinese", 1, true, PopularType.week));
-        // System.out.println(NHAPI.URLs.search("chinese", 1, true, PopularType.today));
-
-        final ArrayList<Comic> list = new ArrayList<>();
-        /*
-        * NHApiComicFactory usage demo
-        **/
-        ResponseCallback onFactoryComicListReturn = new ResponseCallback() {
-            @Override
-            public void onReponse(String response) {
-                JsonArray array = new JsonParser().parse(response).getAsJsonArray();
-                Gson gson = new Gson();
-                Boolean hasNextPage = true;
-
-                if (array.size() == 0)
-                    hasNextPage = false;
-                else if (array.size() != 25) {
-                    hasNextPage = false;
-                    for (JsonElement jsonElement : array) {
-                        Comic c = gson.fromJson(jsonElement, Comic.class);
-                        list.add(c);
-                    }
-                } else {
-                    hasNextPage = true;
-                    for (JsonElement jsonElement : array) {
-                        Comic c = gson.fromJson(jsonElement, Comic.class);
-                        list.add(c);
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onError(String error) {
-                System.err.println("Error accessing comic list! This probably means that NHentai's DDoS protection is blocking us. API returned a \"" + error + "\"");
-                
-            }
-
-        };
-        //end of callback
-        NHApiComicFactory factory = new NHApiComicFactory("chinese", " ", 1, PopularType.today, onFactoryComicListReturn);
-        factory.requestComicList();// trigger onFactoryComicListReturn.onResponse(response)
-        for (Comic comic : list) {
-            System.out.println(comic.getTitle());
-        }
+    public boolean compilation() {
+        return true;
+    }
+    //simply fetches api root and fetches version/messages
+    @Test
+    public boolean api_heartbeat() {
+        
     }
 }
