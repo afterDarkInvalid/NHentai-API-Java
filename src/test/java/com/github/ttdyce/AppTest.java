@@ -13,12 +13,11 @@ public class AppTest
     @Test
     public void compilation() {
         System.out.println("Compiled properly!");
-        return;
+        assert true;
     }
     //simply fetches api root and fetches version/messages
     @Test
     public void api_heartbeat() throws Exception {
         System.out.println(new NHAPI().fetch_api_root());
-        return;
     }
 }
