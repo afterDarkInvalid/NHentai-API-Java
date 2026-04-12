@@ -18,6 +18,12 @@ public class AppTest
     //simply fetches api root and fetches version/messages
     @Test
     public void api_heartbeat() throws Exception {
-        System.out.println(new NHAPI().fetch_api_root());
+        String api_root_fetch = new NHAPI().fetch_api_root();
+        // don't feel like doing an entire Gson app, so just going to do a simple indexof
+        assert api_root_fetch.contains("Abandon all hope, ye who develop here.");
+    }
+    @Test
+    public void basic_search() throws Exception {
+        
     }
 }
