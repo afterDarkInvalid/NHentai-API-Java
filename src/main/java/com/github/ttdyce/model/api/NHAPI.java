@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 import com.github.ttdyce.model.Request;
-import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class NHAPI {
@@ -85,7 +85,7 @@ public class NHAPI {
             
             // Otherwise, compose the result as a json array and return it
             // System.out.println("Response raw: " + response);
-            JsonArray result = new JsonParser().parse(response).getAsJsonObject().get("result").getAsJsonArray();
+            JsonObject result = new JsonParser().parse(response).getAsJsonObject();
             callback.onReponse(result.toString());
             
         }
