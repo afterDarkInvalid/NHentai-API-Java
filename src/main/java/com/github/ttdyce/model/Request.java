@@ -17,6 +17,8 @@ public class Request {
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.setDoOutput(true);
+        // 2026-04-16- at the request of the API we will set the user agent
+        con.setRequestProperty("User-Agent", "afterDarkInvalid's fork of ttydyce/NHAPI");
 
         int status = con.getResponseCode();
         if (status != 200)

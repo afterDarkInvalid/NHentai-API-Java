@@ -80,7 +80,7 @@ public class App {
                     Gson gson = new Gson();
                     Comic comic = gson.fromJson(object, Comic.class);
                     //here is what a comic looks like
-                    System.out.println(gson.toJson(comic));
+                    System.out.println(object);
                 }
                 @Override
                 public void onError(String error) {

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 import com.github.ttdyce.model.Request;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 
 public class NHAPI {
@@ -85,7 +85,7 @@ public class NHAPI {
             
             // Otherwise, compose the result as a json array and return it
             // System.out.println("Response raw: " + response);
-            JsonObject result = new JsonParser().parse(response).getAsJsonObject();
+            JsonArray result = new JsonParser().parse(response).getAsJsonObject().get("result").getAsJsonArray();
             callback.onReponse(result.toString());
             
         }
@@ -119,7 +119,7 @@ public class NHAPI {
     // https://nhentai.net/api/gallery/284987
     public static class URLs {
         public final static String API_ROOT = "https://nhentai.net/api/v2";
-        private final static String searchPrefix = API_ROOT + "/galleries/search?query=";
+        private final static String searchPrefix = API_ROOT + "/galleries?query=";
         private final static String getComicPrefix = API_ROOT + "/gallery/";
         private final static String[] types = { "jpg", "png" };
 
