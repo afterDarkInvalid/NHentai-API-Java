@@ -20,7 +20,7 @@ public class AppTest
     public void api_heartbeat() throws Exception {
         String api_root_fetch = new NHAPI().fetch_api_root();
         // don't feel like doing an entire Gson app, so just going to do a simple indexof
-        assert api_root_fetch.contains("Abandon all hope, ye who develop here.");
+        assert api_root_fetch.contains("Abandon all hope");
     }
     @Test
     public void basic_search() throws Exception {

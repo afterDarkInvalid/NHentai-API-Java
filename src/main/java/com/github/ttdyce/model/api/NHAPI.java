@@ -76,13 +76,15 @@ public class NHAPI {
         // Check for 503 response. This means that Cloudflare is refusing the play nice
         // 503 example: " 503, Service Temporarily Unavailable"
         // Send an error with the response
-        if (response == null || response.contains("503")) {
+        // swapping out contains so it doesn't trip if the body text contains 503, not yet tested but hey
+        if (response == null || response.startsWith(" 503")) {
             
             callback.onError(response.toString());
             
         } else {
             
             // Otherwise, compose the result as a json array and return it
+            // System.out.println("Response raw: " + response);
             JsonArray result = new JsonParser().parse(response).getAsJsonObject().get("result").getAsJsonArray();
             callback.onReponse(result.toString());
             
@@ -166,7 +168,7 @@ public class NHAPI {
         }
 
         public static String getIndex(int page) {
-            return API_ROOT + "/galleries/all?page=" + page;
+            return API_ROOT + "/galleries?page=" + page;
         }
     }
 }

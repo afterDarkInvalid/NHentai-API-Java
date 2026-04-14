@@ -13,6 +13,7 @@ public class Request {
 
     public String get(String urlLink) throws IOException {
         URL url = new URL(urlLink.replace(" ", "%20"));//url seems cant read " "? browser is fine to replace it (2019/12/22)
+        // System.out.println("URL connection: " + url);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.setDoOutput(true);
