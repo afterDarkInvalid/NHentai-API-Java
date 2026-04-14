@@ -76,6 +76,7 @@ public class App {
             ResponseCallback comicReturnCallback = new ResponseCallback() {
                 @Override
                 public void onReponse(String response) {
+                    System.out.println("response: " + response);
                     JsonObject object = new JsonParser().parse(response).getAsJsonObject();
                     Gson gson = new Gson();
                     Comic comic = gson.fromJson(object, Comic.class);
